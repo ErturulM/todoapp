@@ -85,12 +85,14 @@ function App() {
               {uncompleted.slice(0,visibleUncompleted).map(todo => (
                 <div key={todo.id} className="todo-item">
                   <p>{todo.title}</p>
-                  <button onClick={() => CompleteButton(todo.id)}>Complete</button>
+                  <button className='completeButton'
+                  onClick={() => CompleteButton(todo.id)}>Complete</button>
                 </div>
               ))}
               {
               uncompleted.length > visibleUncompleted && ( 
-                <button onClick={() => setVisibleUncompleted(visibleUncompleted + todosPerLoad)}> 
+                <button className='loaderButton'
+                 onClick={() => setVisibleUncompleted(visibleUncompleted + todosPerLoad)}> 
                 Load More Uncompleted 
                  </button>
               )}
@@ -100,12 +102,14 @@ function App() {
               {completed.slice(0,visibleCompleted).map(todo => (
                 <div key={todo.id} className="todo-item">
                   <p>{todo.title}</p>
-                  <button onClick={() => UndoButton(todo.id)}>Undo</button>
+                  <button className='undoButton'
+                  onClick={() => UndoButton(todo.id)}>Undo</button>
                 </div>
               ))}
               {
               completed.length > visibleCompleted && ( 
-                <button onClick={() => setVisibleCompleted(visibleCompleted + todosPerLoad)}> 
+                <button className='loaderButton'
+                 onClick={() => setVisibleCompleted(visibleCompleted + todosPerLoad)}> 
                 Load More Completed 
                  </button>
               )}

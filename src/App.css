@@ -49,18 +49,46 @@
   justify-content: space-between;
   align-items: center;
   border-radius: 30px;
+  min-height: 70px;
 }
 
-button {
+.completeButton {
   padding: 8px 15px;
   cursor: pointer;
   background: green;
   color: white;
   border: none;
-  border-radius: 100px; 
+  border-radius: 10px; 
+}
+.undoButton{
+  padding: 8px 15px;
+  cursor: pointer;
+  background: darkred;
+  color: white;
+  border: none;
+  border-radius: 10px; 
 }
 
-button:hover {
-  background: #6a886c;
+.completeButton:hover {
+  background: #67a36b;
 }
+.undoButton:hover{
+  background: #d13e3e
+}
+.loaderButton {
+  background-color: #007bff; /* Blue color */
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  font-size: 16px;
+  border-radius: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.loaderButton:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
 
