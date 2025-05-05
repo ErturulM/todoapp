@@ -10,24 +10,28 @@ function App() {
         .then(response => response.json())
         .then(data => setTodos(data));
     }, []);
+
+    const[visibleCompleted, setVisibleCompleted] = useState(5);
+    const[visibleUncompleted, setVisibleUncompleted] = useState(5);
+
+    const todosPerLoad = 5;
     // Създаваме листа с филтрирани по user todo-та
 
     const [filterUserId, setFilterUserId] = useState(null);
     const userIDs = [... new Set(todos.map(todo => todo.userId))]
     const filteredTodos = filterUserId ? todos.filter(todo => todo.userId === Number(filterUserId)) : todos;
     
-    // разделяме взетата информация
     
 
       //  Функция за подредба
     const [sortOrder, setSortOrder] = useState('az');
     const sorting = (todos) => {return [...todos].sort((a,b) => {
-      return sortOrder == 'az' ? a.title.localeCompare(b.title) : b.title.localeCompare(a.title);
+      return sortOrder === 'az' ? a.title.localeCompare(b.title) : b.title.localeCompare(a.title);
 
     });
   };
 
-  const completed = sorting(filteredTodos.filter(todo => todo.completed));
+    const completed = sorting(filteredTodos.filter(todo => todo.completed));
     const uncompleted = sorting(filteredTodos.filter(todo => !todo.completed));
 
     // Функционалност на бутоните
@@ -48,7 +52,11 @@ function App() {
                 <select
                   id="user-filter"
                   value={filterUserId || ""}
-                  onChange={(e) => setFilterUserId(e.target.value || null)}
+                  onChange={(e) =>{ setFilterUserId(e.target.value || null)
+                    setVisibleCompleted(5);
+                    setVisibleUncompleted(5);
+                  }
+                  }
                 >
                   <option value="">All Users</option>
                   {userIDs.map(id => (
@@ -74,23 +82,36 @@ function App() {
           <div className="todo-columns">
             <div className="left">
               <h1>UNCOMPLETED TODOS</h1>
-              {uncompleted.map(todo => (
+              {uncompleted.slice(0,visibleUncompleted).map(todo => (
                 <div key={todo.id} className="todo-item">
                   <p>{todo.title}</p>
                   <button onClick={() => CompleteButton(todo.id)}>Complete</button>
                 </div>
               ))}
+              {
+              uncompleted.length > visibleUncompleted && ( 
+                <button onClick={() => setVisibleUncompleted(visibleUncompleted + todosPerLoad)}> 
+                Load More Uncompleted 
+                 </button>
+              )}
             </div>
             <div className="right">
               <h1>COMPLETED TODOS</h1>
-              {completed.map(todo => (
+              {completed.slice(0,visibleCompleted).map(todo => (
                 <div key={todo.id} className="todo-item">
                   <p>{todo.title}</p>
                   <button onClick={() => UndoButton(todo.id)}>Undo</button>
                 </div>
               ))}
+              {
+              completed.length > visibleCompleted && ( 
+                <button onClick={() => setVisibleCompleted(visibleCompleted + todosPerLoad)}> 
+                Load More Completed 
+                 </button>
+              )}
+          
             </div>
-          </div>
+            </div>
         </div>
       );
 }
