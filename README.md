@@ -21,13 +21,11 @@
 
 ## Instalation and how to start
 1. **Clone the repository**
- - in cmd:
- - git clone https://github.com/ErturulM/todoapp.git
+ - In cmd: "git clone https://github.com/ErturulM/todoapp.git"
 2. **Install dependencies**
-- in cmd:
-- npm install
+- In cmd: "npm install" 
 3. **Run the server**
-- in cmd:
-- npm start
+- In cmd: "npm start"
+- NOTE: You need to be in the directory of the repository you cloned
 4. **Open in browser**
-- app should start in your browser by itself
+- The app should start in your browser by itself
