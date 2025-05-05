@@ -76,7 +76,7 @@
   background: #d13e3e
 }
 .loaderButton {
-  background-color: #007bff; /* Blue color */
+  background-color: blue; 
   color: white;
   border: none;
   padding: 10px 16px;
@@ -88,7 +88,7 @@
 }
 
 .loaderButton:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #0056b3; 
 }
 
 
