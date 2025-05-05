@@ -2,10 +2,10 @@
 
 ## Screenshots
 
-![image_alt]{https://github.com/ErturulM/todoapp/blob/main/public/screenshot.png?raw=true}
+![image_alt](https://github.com/ErturulM/todoapp/blob/main/public/screenshot.png?raw=true)
 
 
-![image_alt]{https://github.com/ErturulM/todoapp/blob/main/public/screenshot2.png?raw=true}
+![image_alt](https://github.com/ErturulM/todoapp/blob/main/public/screenshot2.png?raw=true)
 
 ## A responsive React app that allows you to manage your tasks
 - Task Managment
