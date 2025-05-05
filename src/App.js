@@ -21,8 +21,6 @@ function App() {
     const userIDs = [... new Set(todos.map(todo => todo.userId))]
     const filteredTodos = filterUserId ? todos.filter(todo => todo.userId === Number(filterUserId)) : todos;
     
-    
-
       //  Функция за подредба
     const [sortOrder, setSortOrder] = useState('az');
     const sorting = (todos) => {return [...todos].sort((a,b) => {
@@ -39,8 +37,6 @@ function App() {
       (todo => todo.id === id ? {...todo, completed:  true} : todo)); };
     const UndoButton = (id) => {setTodos(todos.map
       (todo => todo.id === id ? {...todo, completed:  false} : todo)); };
-   
-    
 
       return (
         <div className="app">
@@ -81,7 +77,7 @@ function App() {
       
           <div className="todo-columns">
             <div className="left">
-              <h1>UNCOMPLETED TODOS</h1>
+              <h1>Pending</h1>
               {uncompleted.slice(0,visibleUncompleted).map(todo => (
                 <div key={todo.id} className="todo-item">
                   <p>{todo.title}</p>
@@ -93,12 +89,12 @@ function App() {
               uncompleted.length > visibleUncompleted && ( 
                 <button className='loaderButton'
                  onClick={() => setVisibleUncompleted(visibleUncompleted + todosPerLoad)}> 
-                Load More Uncompleted 
+                Load More 
                  </button>
               )}
             </div>
             <div className="right">
-              <h1>COMPLETED TODOS</h1>
+              <h1>Completed</h1>
               {completed.slice(0,visibleCompleted).map(todo => (
                 <div key={todo.id} className="todo-item">
                   <p>{todo.title}</p>
@@ -110,7 +106,7 @@ function App() {
               completed.length > visibleCompleted && ( 
                 <button className='loaderButton'
                  onClick={() => setVisibleCompleted(visibleCompleted + todosPerLoad)}> 
-                Load More Completed 
+                Load More 
                  </button>
               )}
           
